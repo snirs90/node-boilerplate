@@ -1,5 +1,7 @@
 # NodeJS & AngularJS Boilerplate
 
+## This is still working in progress. :)
+
 ## Installation notes
 
 Run: ./install.sh
