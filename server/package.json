@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.13.3",
+    "compression": "^1.5.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "express-jwt": "git@github.com:snirs90/express-jwt.git",
+    "express-validator": "^2.14.2",
+    "jsonwebtoken": "^5.0.4",
+    "lodash": "^3.10.1",
+    "mongoose": "^4.1.2",
+    "mongoose-timestamp": "^0.4.0",
+    "mysql": "^2.9.0",
+    "nconf": "^0.7.2",
+    "node-resty": "^0.1.5",
+    "nodemailer": "^1.4.0",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "q": "^1.4.1",
+    "sequelize": "^3.6.0",
+    "winston": "^1.0.1",
+    "xoauth2": "^1.1.0"
+  }
+}

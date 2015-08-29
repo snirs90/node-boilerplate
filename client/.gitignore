@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+app/bower_components
+.sass-cache
+dist/
+!gulp-tasks/dist
+node_modules
+.tmp
+app/scripts/config/config.js

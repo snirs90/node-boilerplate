@@ -1,0 +1,26 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "authors": [
+    "Snir Segal <snirs@codeoasis.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.4",
+    "angular-ui-router": "~0.2.15",
+    "angular-bootstrap": "~0.13.3",
+    "restangular": "~1.5.1",
+    "angular-jwt": "~0.0.9",
+    "bootstrap": "~3.3.5",
+    "angular-local-storage": "~0.2.2",
+    "angular-loading-bar": "~0.8.0",
+    "angular-messages": "~1.4.4"
+  }
+}

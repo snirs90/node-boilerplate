@@ -1,0 +1,32 @@
+<div id="loginPage">
+    <div class="container">
+        <!-- Error Alert -->
+        <alert type="danger" data-ng-show="signIn.error" close="closeAlert()">
+            {{signIn.error}}
+        </alert>
+
+        <!-- Login Form -->
+        <form class="form-signin" data-ng-submit="submit()">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control"
+                   placeholder="Email address" required autofocus
+                   data-ng-model="signIn.email">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control"
+                   placeholder="Password" required
+                   data-ng-model="signIn.password">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Sign in
+            </button>
+        </form>
+        <div style="text-align: center">
+            <button class="btn btn-lg btn-danger btn-block signupButton" data-ng-click="signup()">
+                Sign up
+            </button>
+        </div>
+
+
+    </div>
+    <!-- /container -->
+</div>

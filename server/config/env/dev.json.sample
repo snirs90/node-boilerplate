@@ -1,0 +1,65 @@
+{
+    "database": {
+        "mongo": {
+            "host": "localhost",
+            "port": "27017",
+            "db": "node_boilerplate"
+        },
+
+        "mysql": {
+            "host": "localhost",
+            "user": "root",
+            "password": "root",
+            "database": "node_boilerplate"
+        }
+    },
+
+    "app": {
+        "port": 5500,
+        "serverUrl": "http://localhost:5500",
+        "clientUrl": "http://localhost:5510"
+    },
+
+    "emailNotifications": {
+        "from": "from@email.com"
+    },
+
+    "mailService": {
+        "gmail": {
+            "auth": {
+                "user": "your@gmail.com",
+                "pass": ""
+            },
+            "xoauth2": { // OPTIONAL
+                "user": "",
+                "clientId": "",
+                "clientSecret": "",
+                "refreshToken": "",
+                "accessToken": ""
+            }
+        }
+    },
+
+    "auth": {
+        "token": {
+            "secret": "aMdoeb5ed87zorRdkD6greDML81DcnrzeSD648ferFejmplx",
+            "expiresInMinutes": 60
+        }
+    },
+
+    "security": {
+        "excludeRoutes": [
+            { "url": "/api/users", "methods": ["POST"] }
+        ]
+    },
+
+    "logger": {
+        "transports": [
+            { "name": "general", "filename": "logs/general.log", "level": "log" },
+            { "name": "info", "filename": "logs/info.log", "level": "info" },
+            { "name": "warn","filename": "logs/warn.log", "level": "warn" },
+            { "name": "error", "filename": "logs/error.log", "level": "error" },
+            { "name": "logs","filename": "logs/logs.log" }
+        ]
+    }
+}

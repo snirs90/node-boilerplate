@@ -1,0 +1,4 @@
+{
+    "env": "stage",
+    "RESTServerUrl": "http://localhost:5500"
+}
