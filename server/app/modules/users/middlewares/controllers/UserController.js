@@ -19,13 +19,7 @@ var controllers = {
      */
     create: function(req, res, next) {
 
-        req.check('email', {code : 400, msg : 'email must be provided'}).notEmpty();
-        req.check('password', {code : 400, msg : 'password must be provided'}).notEmpty();
 
-        var errors = req.validationErrors();
-        if (errors) {
-            return res.promise(Q.reject({ code: 400, payload: errors }));
-        }
 
         UserUtils.createConfirmationToken()                                       // create a random token
             .then(function(token){

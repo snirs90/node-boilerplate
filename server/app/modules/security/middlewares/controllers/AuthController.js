@@ -26,8 +26,10 @@ var controllers = {
                     // email does not exists
                     res.promise(Q.reject({
                         code: 401,
-                        payload: {message: 'One or more of the given credentials is invalid'}
+                        message: 'One or more of the given credentials is invalid'
                     }));
+
+                    return;
                 }
 
                 // Compare password.
@@ -44,9 +46,7 @@ var controllers = {
                     .catch(function(err) {
                         res.promise(Q.reject({
                             code: 401,
-                            payload: {
-                                message: 'One or more of the given credentials is invalid'
-                            }
+                            message: 'One or more of the given credentials is invalid'
                         }));
                     });
             });
@@ -67,6 +67,7 @@ var controllers = {
                 if (!user) {
                     // No user found with this token.
                     res.redirect(nconf.get('app').clientUrl + '/login?error=invalid');
+                    return;
                 }
 
                 // Found a user with this token.

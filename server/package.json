@@ -16,6 +16,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-jwt": "git@github.com:snirs90/express-jwt.git",
+    "express-unless": "^0.3.0",
     "express-validator": "^2.14.2",
     "jsonwebtoken": "^5.0.4",
     "lodash": "^3.10.1",

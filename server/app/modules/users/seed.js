@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = seedUsers;
-
 var User = require('./models/UserModel');
 
 var Q = require('q');
@@ -28,3 +26,5 @@ function seedUsers(){
             console.log(err.message);
         });
 }
+
+module.exports = seedUsers;

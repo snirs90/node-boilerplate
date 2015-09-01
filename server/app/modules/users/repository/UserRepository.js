@@ -5,10 +5,24 @@ var mysql     = require(appRoot + '/core/config/databases/mysql'),
     User      = require('../models/UserModel');
 
 module.exports = {
+    getUserById: getUserById,
     getUserByEmail: getUserByEmail,
     getUserByConfirmationToken: getUserByConfirmationToken,
     create: create
 };
+
+/**
+ * Get user by id.
+ *
+ * @param {int} userId
+ * @returns {*}
+ */
+function getUserById(userId){
+    return User.findOne({
+        attributes: ['id', 'password', 'active', 'deleted_at'],
+        where: { id: userId, active: true }
+    });
+}
 
 /**
  * Get user by email.

@@ -2,7 +2,12 @@
 
 var Q = require('q');
 
-module.exports = jwtFormatter;
+function SecurityUnauthorizedError(message) {
+    this.name = this.constructor.name;
+    this.status = 401;
+    this.code = 401;
+    this.message = message || "No authorization token was found";
+}
 
 /**
  * @name middleware
@@ -16,11 +21,10 @@ module.exports = jwtFormatter;
  * @param next
  */
 function jwtFormatter(err, req, res, next) {
-
     if (!err) {
         next();
     }
-    // res.status(err.status).json(config);
-    res.promise(Q.reject({code: 401, payload: {message: err.message}}));
-
+    res.promise(Q.reject(new SecurityUnauthorizedError(err.message)));
 }
+
+module.exports = jwtFormatter;

@@ -13,6 +13,9 @@ var jwt = require('express-jwt');
 var cors = require('cors');
 var Q = require('q');
 
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+
 // Express app.
 var app = express();
 
@@ -27,8 +30,12 @@ var logger;
  * Start the server configuration process.
  */
 Q.when(configure)
+    .then(function() {
+        return mysqlConnection.authenticate();
+    })
     .then(setupApp)
     .then(registerModules)
+    .then(setupSecurity)
     .then(registerModuleRoutes)
     .then(runServer)
     .catch(function(err) {
@@ -37,6 +44,10 @@ Q.when(configure)
 
 /* ############### PRIVATE FUNCTIONS ############### */
 
+/**
+ * Setup the application configurations.
+ * @returns {boolean}
+ */
 function setupApp() {
 
     logger = require('./app/core/config/logger');
@@ -56,17 +67,26 @@ function setupApp() {
     // Rest API formatter
     app.use(restAPIFormatter);
 
+    return true;
+}
+
+/**
+ * Setup app security configurations.
+ *
+ * @param {*} modules - the modules references.
+ */
+function setupSecurity(modules) {
     // jwt middleware
     app.use('/api',
         jwt({secret: nconf.get('auth').token.secret})
-            //.unless({ path: ['/api/users' ] })
-            .unless({ path: nconf.get('security').excludeRoutes })
+            .unless({ path: nconf.get('security').excludeRoutes }),
+            modules.security.authentication().unless({ path: nconf.get('security').excludeRoutes })
     );
 
     // last middleware to catch unauthorized requests
     app.use(JwtFormatter);
 
-    return true;
+    return modules;
 }
 
 /**

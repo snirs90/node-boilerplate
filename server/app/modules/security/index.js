@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-    routes: require('./routes')
+    routes: require('./routes'),
+    authentication: require('./authentication')
 };

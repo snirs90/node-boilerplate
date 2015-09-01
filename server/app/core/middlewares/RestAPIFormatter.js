@@ -5,8 +5,6 @@ var nconf = require('nconf'),
     _ = require('lodash'),
     logger = require('winston');
 
-module.exports = middleware;
-
 /**
  * @name middleware
  * @function
@@ -33,26 +31,24 @@ function middleware(req, res, next) {
         function formatResponse(data) {
             var config = {
                 code: data.code,
-                payload: data.payload || data
+                data: data.data || data
             };
             // check if code field is a valid number
             if (!_.isNumber(config.code)) {
                 config.code = 200;
             }
 
-            res.status(config.code).json(config.payload);
+            res.status(config.code).json(config.data);
         }
 
-        function throwError(error) {
-            var config = {
-                code: error.code,
-                payload: error.payload || error
-            };
+        function throwError(err) {
+
             // check if code field is a valid number
-            if (!_.isNumber(config.code)) {
-                config.code = 500;
+            if (!_.isNumber(err.status)) {
+                err.status = err.code || 500;
             }
-            res.status(config.code).json(config.payload);
+
+            res.status(err.status).json(err);
             logger.error(error);
         }
     };
@@ -60,5 +56,4 @@ function middleware(req, res, next) {
     return next();
 }
 
-
-
+module.exports = middleware;

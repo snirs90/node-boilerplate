@@ -1,5 +1,7 @@
 "use strict";
 
+var Q = require('q');
+
 var validations = {
 
     /**
@@ -18,7 +20,7 @@ var validations = {
 
         var errors = req.validationErrors(true);
         if (errors) {
-            return res.promise(Q.reject({code: 400, payload: errors}));
+            return res.promise(Q.reject({code: 400, errors: errors}));
         }
 
         next();

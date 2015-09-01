@@ -14,5 +14,4 @@ module.exports = function registerRoutes(app, modules) {
     app.use(security.register());
 
     return true;
-
 };

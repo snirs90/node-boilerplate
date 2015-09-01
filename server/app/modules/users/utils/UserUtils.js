@@ -9,12 +9,6 @@ var crypto = require('crypto'),
 
 var UserErrors = require('../errors');
 
-module.exports = {
-    createConfirmationToken: createConfirmationToken,
-    createJwtToken: createJwtToken,
-    encryptPassword: encryptPassword
-};
-
 /**
  * Create a random token
  * @returns {Promise} - with the String of the token
@@ -43,7 +37,7 @@ function createJwtToken(user) {
 /**
  * Encrypt password.
  *
- * @param pass
+ * @param password
  * @returns {*}
  */
 function encryptPassword(password) {
@@ -55,3 +49,9 @@ function encryptPassword(password) {
             return hash;
         })
 }
+
+module.exports = {
+    createConfirmationToken: createConfirmationToken,
+    createJwtToken: createJwtToken,
+    encryptPassword: encryptPassword
+};

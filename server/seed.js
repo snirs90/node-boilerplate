@@ -1,5 +1,8 @@
 'use strict';
 
+var path = require('path');
+global.appRoot = path.resolve(__dirname) + '/app'
+
 /* NPM MODULES */
 var Q = require('q');
 
@@ -12,7 +15,9 @@ var seedUsers       = require('./app/modules/users').seed;
  * Start the server configuration process.
  */
 Q.when(configure)
-    .then(mysqlConnection)
+    .then(function() {
+        return mysqlConnection.authenticate();
+    })
     .then(seedUsers)
     .then(doneSeeding)
     .catch(errorHandler);
